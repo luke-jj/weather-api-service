@@ -14,6 +14,10 @@ app.get('/api/v1/weather', async (req, res) => {
     return res.status(400).send('Query string parameter `city` is required.');
   }
 
+  if (!/^[0-9A-Za-z ,]{1,42}$/.test(req.query['city'])) {
+    return res.status(400).send('Illegal city name.');
+  }
+
   try {
     const { data: weather } = await getWeather(req.query['city']);
     return res.send(weather);
