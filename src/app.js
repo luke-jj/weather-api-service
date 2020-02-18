@@ -11,7 +11,7 @@ require('./startup/middleware')(app);
 app.get('/api/v1/weather', async (req, res) => {
 
   if (!req.query['city']) {
-    return res.status(400).send('`city` is required.');
+    return res.status(400).send('Query string parameter `city` is required.');
   }
 
   try {
