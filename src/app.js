@@ -1,27 +1,12 @@
 const express = require('express');
-const compression = require('compression');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
-
 const config = require('../config');
 const { getWeather } = require('./services/weather');
-
-if (!config.API_KEY) {
-  throw new Error('API_KEY must be set.');
-}
-
-if (!config.API_DOMAIN) {
-  throw new Error('API_DOMAIN must be set.');
-}
 
 const app = express();
 const port = config.PORT;
 
-app.use(morgan('tiny'));
-app.use(cors());
-app.use(helmet());
-app.use(compression());
+require('./startup/config')();
+require('./startup/middleware')(app);
 
 app.get('/api/v1/weather', async (req, res) => {
 
