@@ -7,8 +7,12 @@ const morgan = require('morgan');
 const config = require('../config');
 const { getWeather } = require('./services/weather');
 
-if (!config.KEY) {
+if (!config.API_KEY) {
   throw new Error('API_KEY must be set.');
+}
+
+if (!config.API_DOMAIN) {
+  throw new Error('API_DOMAIN must be set.');
 }
 
 const app = express();

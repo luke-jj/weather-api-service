@@ -4,22 +4,19 @@ const config = require('../../config');
 
 module.exports.getWeather = getWeatherData;
 
-const apiUrl = 'https://api.openweathermap.org/data/2.5/';
-const apiResource = 'forecast'
+const protocol = 'https://';
+const domain = config.API_DOMAIN;
+const location = '/data/2.5';
+const resource = '/forecast'
 
 function getWeatherData(city) {
   const data = {
     'q': city,
     'units': 'metric',
-    'APPID': config.KEY
+    'APPID': config.API_KEY
   };
-  console.log(data);
-
   const queryString = querystring.stringify(data);
-  console.log(queryString);
-
-  const request = `${apiUrl}${apiResource}?${queryString}`;
-  console.log(request);
+  const request = `${protocol}${domain}${location}${resource}?${queryString}`;
 
   return axios.get(request);
 }
