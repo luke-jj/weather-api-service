@@ -14,9 +14,18 @@ app.get('/api/v1/weather', async (req, res) => {
     return res.status(400).send('`city` is required.');
   }
 
-  const { data: weather } = await getWeather(req.query['city']);
+  try {
+    const { data: weather } = await getWeather(req.query['city']);
+    return res.send(weather);
+  } catch (ex) {
+    if (ex.response && ex.response.status === 404) {
+      return res.status(404).send('City not found.');
+    }
 
-  res.send(weather);
+    return res
+      .status(500)
+      .send('Something went wrong while collecting weather data.');
+  }
 });
 
 app.listen(port, () => console.log(`Listening on ${port}...`));
