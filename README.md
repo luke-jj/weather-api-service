@@ -1,4 +1,5 @@
 # Weather API Service
+A REST API Backend for various weather applications.
 
 ## Requirements
 - [Node.js](https://nodejs.org/en/) version v12.15.0 or later,
