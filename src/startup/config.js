@@ -10,7 +10,11 @@ module.exports = () => {
     throw new Error('API_KEY must be set.');
   }
 
-  if (!config.API_DOMAIN) {
-    throw new Error('API_DOMAIN must be set.');
+  if (!config.API_WEATHER_DOMAIN) {
+    throw new Error('API_WEATHER_DOMAIN must be set.');
+  }
+
+  if (!config.API_TIME_DOMAIN) {
+    throw new Error('API_TIME_DOMAIN must be set.');
   }
 };

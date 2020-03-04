@@ -1,6 +1,7 @@
 const express = require('express');
 const config = require('../config');
 const { getWeather } = require('./services/weather');
+const { getTime } = require('./services/time');
 
 const app = express();
 const port = config.PORT;
@@ -29,6 +30,25 @@ app.get('/api/v1/weather', async (req, res) => {
     return res
       .status(500)
       .send('Something went wrong while collecting weather data.');
+  }
+});
+
+app.get('/api/v1/time', async (req, res) => {
+  try {
+    const { data } = await getTime();
+
+    // convert filetime to unix timestamp
+    const datestring = data.currentFileTime.toString();
+    const fileTime = parseInt(datestring.slice(0, -4));
+    const epoch = Date.UTC(1601,0,1);
+    const utcMiliseconds = epoch + fileTime;
+    const utcSeconds = parseInt(utcMiliseconds.toString().slice(0, -3));
+
+    return res.send({ currentUnixTime: utcSeconds });
+  } catch (ex) {
+    return res
+      .status(500)
+      .send('Something went wrong while collecting time data.');
   }
 });
 

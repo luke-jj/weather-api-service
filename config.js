@@ -4,5 +4,6 @@ module.exports = {
   ENVIRONMENT: process.env.NODE_ENV,
   LOG_ENABLED: process.env.API_LOG_ENABLED === 'true',
   API_KEY: process.env.API_KEY,
-  API_DOMAIN: process.env.API_DOMAIN,
+  API_WEATHER_DOMAIN: process.env.API_WEATHER_DOMAIN,
+  API_TIME_DOMAIN: process.env.API_TIME_DOMAIN,
 };

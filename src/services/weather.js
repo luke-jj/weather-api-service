@@ -5,7 +5,7 @@ const config = require('../../config');
 module.exports.getWeather = getWeatherData;
 
 const protocol = 'https://';
-const domain = config.API_DOMAIN;
+const domain = config.API_WEATHER_DOMAIN;
 const location = '/data/2.5';
 const resource = '/forecast'
 
