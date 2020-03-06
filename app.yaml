@@ -18,6 +18,6 @@ env_variables:
   API_CONFIG_NAME:
   NODE_ENV:
   API_LOG_ENABLED:
-  API_KEY:
-  API_DOMAIN:
+  API_WEATHER_DOMAIN:
+  API_TIME_DOMAIN:
 # [END gae_quickstart_yaml]
