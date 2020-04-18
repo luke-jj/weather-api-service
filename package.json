@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/app.ts",
     "build": "tsc -p .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,6 +37,7 @@
     "@types/node": "^13.13.0",
     "nodemon": "^2.0.3",
     "ts-node": "^8.8.2",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
   }
 }

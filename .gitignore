@@ -3,3 +3,4 @@ package-lock.json
 app.tpl.yaml
 .env
 .env*
+.dist
